@@ -1,0 +1,31 @@
+.loading {
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--gray-100);
+  position: fixed;
+  z-index: 9999;
+}
+.loading > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bar {
+  width: clamp(90px, 25vw, 120px);
+  box-sizing: border-box;
+  height: 8px;
+  background-color: var(--gray-200);
+  border-radius: 4px;
+  margin-top: 14px;
+}
+.bar > div {
+  box-sizing: border-box;
+  height: 6px;
+  margin: 1px;
+  background-color: var(--gray-600);
+  border-radius: 3px;
+}
