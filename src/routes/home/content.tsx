@@ -90,6 +90,7 @@ const Title: FC = ({ style, children }) => {
               : style?.opacity ?? 1),
           transition: "opacity 0.48s cubic-bezier(0.4, 0, 0.2, 1)",
           pointerEvents: "none",
+          userSelect: "none",
         }}
       >
         {children}

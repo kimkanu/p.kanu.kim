@@ -93,7 +93,7 @@ const Text: FC<{ loaded?: boolean; delay?: number }> = ({
             keyframes: [
               { width, duration: 0 },
               {
-                width: nameWidth + 1,
+                width: nameWidth,
                 delay: 1200,
                 duration: 280,
               },
