@@ -18,11 +18,19 @@ const AlphaGoStop: FC = () => (
     titleGradient="linear-gradient(110deg, #3b7157, #3b7157, #ec1b24, #ec1b24)"
     demoHref="https://gostop.kanu.kim"
     repoHref="https://github.com/cs470-2020f-team36"
-    skillStack={["python", "pytorch", "flask", "socket.io", "typescript", "react", "heroku"]}
+    skillStack={[
+      "python",
+      "pytorch",
+      "flask",
+      "socket.io",
+      "typescript",
+      "react",
+      "heroku",
+    ]}
   >
     <strong style={{ color: "var(--gray-800)" }}>AlphaGoStop</strong> is a
     project for the introduction to artificial interlligence class. The main
-    logic is similar with Alpha(Go) Zero from DeepMind—It uses{" "}
+    logic is similar to Alpha(Go) Zero from DeepMind—It uses{" "}
     <strong style={{ color: "var(--gray-800)" }}>policy value MCTS</strong>,
     with a little differences: use of{" "}
     <strong style={{ color: "var(--gray-800)" }}>

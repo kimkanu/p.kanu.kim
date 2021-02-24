@@ -1,6 +1,6 @@
 import anime from "animejs";
 import { Fragment, h } from "preact";
-import { useEffect, useRef } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 
 import { FC } from "../../types/component";
 import styles from "./style.css";
@@ -20,6 +20,8 @@ const Text: FC<{ loaded?: boolean; delay?: number }> = ({
   loaded = false,
   delay = 0,
 }) => {
+  const [nameLoaded, setNameLoaded] = useState(false);
+
   const backgroundRef = useRef<HTMLDivElement>();
   const textRef = useRef<HTMLDivElement>();
   const nameRef = useRef<HTMLSpanElement>();
@@ -93,7 +95,7 @@ const Text: FC<{ loaded?: boolean; delay?: number }> = ({
               {
                 width: nameWidth + 1,
                 delay: 1200,
-                duration:280,
+                duration: 280,
               },
             ],
           },
@@ -130,7 +132,7 @@ const Text: FC<{ loaded?: boolean; delay?: number }> = ({
         );
 
       setTimeout(() => {
-        nameRef.current.innerHTML = "<strong>Keonwoo</strong>";
+        setNameLoaded(true);
       }, 1680);
 
       setTimeout(() => {
@@ -151,23 +153,29 @@ const Text: FC<{ loaded?: boolean; delay?: number }> = ({
         ref={textRef}
         style={{ opacity: loaded ? "100%" : 0 }}
       >
-        <span ref={nameRef} style={{ display: "inline-block" }}>
-          {loaded ? (
-            <Fragment>
-              <strong>Keonwoo</strong>
-            </Fragment>
-          ) : (
-            <Fragment>
-              <strong>kanu</strong>.
-            </Fragment>
-          )}
-        </span>
-        <span
-          ref={kimRef}
-          style={{ display: "inline-block", textAlign: "right" }}
-        >
-          {loaded ? <span>&nbsp;Kim</span> : "kim"}
-        </span>
+        {loaded ? (
+          <Fragment>
+            <strong>Keonwoo </strong>Kim
+          </Fragment>
+        ) : (
+          <Fragment>
+            <span ref={nameRef} style={{ display: "inline-block" }}>
+              {loaded || nameLoaded ? (
+                <strong>Keonwoo</strong>
+              ) : (
+                <Fragment>
+                  <strong>kanu</strong>.
+                </Fragment>
+              )}
+            </span>
+            <span
+              ref={kimRef}
+              style={{ display: "inline-block", textAlign: "right" }}
+            >
+              {loaded ? <span>&nbsp;Kim</span> : "kim"}
+            </span>
+          </Fragment>
+        )}
       </div>
     </div>
   );

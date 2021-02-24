@@ -4,7 +4,6 @@ import Logo from "../../components/logo";
 import anime from "animejs";
 import styles from "./style.css";
 import { useEffect, useRef, useState } from "preact/hooks";
-import { SmoothProvider } from "../../components/smooth-scrolling";
 import HomeContent from "./content";
 import { useSelector } from "react-redux";
 import { RootState } from "../../configure-store";
@@ -37,10 +36,10 @@ const Home: FC = () => {
 
   return isLoadingFinished ? (
     <Fragment>
-      <SmoothProvider class={styles.home} skew>
+      <div class={styles.home}>
         <Loading loaded />
         <HomeContent />
-      </SmoothProvider>
+      </div>
       <div
         style={{
           position: "fixed",
@@ -71,12 +70,6 @@ const Loading: FC<{ loaded?: boolean }> = ({ loaded = false }) => {
 
     anime
       .timeline()
-      .add({
-        targets: textRef.current.base,
-        height: [0, 30],
-        easing: "easeInOutExpo",
-        duration: 1200,
-      })
       .add(
         {
           targets: imageRef.current.base,
@@ -85,8 +78,7 @@ const Loading: FC<{ loaded?: boolean }> = ({ loaded = false }) => {
           paddingBottom: [22, 32],
           easing: "easeInOutExpo",
           duration: 1200,
-        },
-        0
+        }
       )
       .add(
         {
