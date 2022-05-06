@@ -23,7 +23,7 @@ interface ProjectTemplateProps {
 
 const skillStackMap: Record<string, string> = {
   react:
-    "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xNi41IC0xNS4yMzE3NCAzMyAzMC40NjM0OCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6IzIwMjMyYSI+DQogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+DQogIDxnIHN0cm9rZT0iIzYxZGFmYiIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIj4NCiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiLz4NCiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPg0KICAgIDxlbGxpcHNlIHJ4PSIxMSIgcnk9IjQuMiIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwKSIvPg0KICA8L2c+DQo8L3N2Zz4=",
+    "https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png",
   pytorch: "https://pytorch.org/assets/images/pytorch-logo.png",
   "material-ui": "https://material-ui.com/static/logo.png",
   firebase:
@@ -38,6 +38,22 @@ const skillStackMap: Record<string, string> = {
   "socket.io": "https://avatars.githubusercontent.com/u/10566080?s=400&v=4",
   heroku:
     "https://dailysmarty-production.s3.amazonaws.com/uploads/post/img/509/feature_thumb_heroku-logo.jpg",
+
+  docker:
+    "https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic-1280x1095.png.webp",
+  postgresql:
+    "https://wiki.postgresql.org/images/3/30/PostgreSQL_logo.3colors.120x120.png",
+  "express.js":
+    "https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png",
+  typeorm:
+    "https://opencollective-production.s3-us-west-1.amazonaws.com/a90da2c0-a82c-11e7-8125-a1bea2bef08c.png",
+  "passport.js":
+    "data:image/png;base64,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",
+  tailwindcss:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2048px-Tailwind_CSS_Logo.svg.png",
+  "recoil.js":
+    "data:image/png;base64,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",
+  workbox: "https://cdn.worldvectorlogo.com/logos/workbox-1.svg",
 };
 
 const ProjectTemplate: FC<ProjectTemplateProps> = ({
@@ -52,11 +68,11 @@ const ProjectTemplate: FC<ProjectTemplateProps> = ({
   skillStack,
   children,
 }) => {
-  const wrapperRef = useRef<HTMLDivElement>();
-  const leftRef = useRef<HTMLImageElement>();
-  const centerRef = useRef<HTMLImageElement>();
-  const rightRef = useRef<HTMLImageElement>();
-  const descRef = useRef<HTMLDivElement>();
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const leftRef = useRef<HTMLImageElement>(null);
+  const centerRef = useRef<HTMLImageElement>(null);
+  const rightRef = useRef<HTMLImageElement>(null);
+  const descRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let animation: anime.AnimeInstance;
@@ -113,7 +129,7 @@ const ProjectTemplate: FC<ProjectTemplateProps> = ({
           }
         } else if (currentRatio < prevRatio && !isIntersecting) {
           // Scrolling up leave
-            animation = anime({
+          animation = anime({
             targets: [
               leftRef.current,
               centerRef.current,
@@ -125,7 +141,7 @@ const ProjectTemplate: FC<ProjectTemplateProps> = ({
             easing: "easeInOutExpo",
           });
         } else {
-            animation = anime({
+          animation = anime({
             targets: [
               leftRef.current,
               centerRef.current,
@@ -144,7 +160,9 @@ const ProjectTemplate: FC<ProjectTemplateProps> = ({
       { threshold: 0.12 }
     );
 
-    observer.observe(wrapperRef.current);
+    if (wrapperRef.current) {
+      observer.observe(wrapperRef.current);
+    }
 
     return (): void => {
       animation?.seek(10000);

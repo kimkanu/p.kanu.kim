@@ -61,25 +61,23 @@ const Home: FC = () => {
 };
 
 const Loading: FC<{ loaded?: boolean }> = ({ loaded = false }) => {
-  const textRef = useRef<{ base: HTMLDivElement }>();
-  const imageRef = useRef<{ base: SVGSVGElement }>();
-  const arrowRef = useRef<HTMLDivElement>();
+  const textRef = useRef<{ base: HTMLDivElement }>(null);
+  const imageRef = useRef<{ base: SVGSVGElement }>(null);
+  const arrowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (loaded) return;
+    if (loaded || !imageRef.current) return;
 
     anime
       .timeline()
-      .add(
-        {
-          targets: imageRef.current.base,
-          scale: [1, 1.4],
-          paddingTop: [0, 16],
-          paddingBottom: [22, 32],
-          easing: "easeInOutExpo",
-          duration: 1200,
-        }
-      )
+      .add({
+        targets: imageRef.current.base,
+        scale: [1, 1.4],
+        paddingTop: [0, 16],
+        paddingBottom: [22, 32],
+        easing: "easeInOutExpo",
+        duration: 1200,
+      })
       .add(
         {
           targets: arrowRef.current,

@@ -6,6 +6,7 @@ import Arrow from "../../components/arrow";
 import { RootActionTypes, RootState } from "../../configure-store";
 import { FC } from "../../types/component";
 import AlphaGoStop from "./projects/alpha-go-stop";
+import Blearn from "./projects/blearn";
 import FitBuddy from "./projects/fit-buddy";
 import MoreOnGithub from "./projects/more-on-github";
 
@@ -100,10 +101,12 @@ const Title: FC = ({ style, children }) => {
 };
 
 const TechStackRow: FC = ({ style, children }) => {
-  const ref = useRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
   const homeSection = useSelector((state: RootState) => state.homeSection);
 
   useEffect(() => {
+    if (!ref.current) return;
+
     let animation: anime.AnimeInstance;
 
     if (homeSection !== 2) {
@@ -120,6 +123,8 @@ const TechStackRow: FC = ({ style, children }) => {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
+        if (!ref.current) return;
+
         animation?.seek(10000);
 
         if (entry.isIntersecting) {
@@ -175,14 +180,19 @@ const Separator: FC = () => (
 );
 
 const HomeContent: FC = () => {
-  const firstSection = useRef<HTMLDivElement>();
-  const secondSection = useRef<HTMLDivElement>();
-  const thirdSection = useRef<HTMLDivElement>();
-  const lastRef = useRef<HTMLDivElement>();
+  const firstSection = useRef<HTMLDivElement>(null);
+  const secondSection = useRef<HTMLDivElement>(null);
+  const thirdSection = useRef<HTMLDivElement>(null);
+  const lastRef = useRef<HTMLDivElement>(null);
   const store = useStore<RootState, RootActionTypes>();
   const homeSection = useSelector((state: RootState) => state.homeSection);
 
   useEffect(() => {
+    if (!firstSection.current) return;
+    if (!secondSection.current) return;
+    if (!thirdSection.current) return;
+    if (!lastRef.current) return;
+
     const firstSectionObserver = new IntersectionObserver(
       observerCallback(store, 0),
       { threshold: 1 }
@@ -241,6 +251,7 @@ const HomeContent: FC = () => {
         {/* Projects */}
         <FitBuddy />
         <AlphaGoStop />
+        <Blearn />
         <MoreOnGithub />
       </section>
 
@@ -331,7 +342,7 @@ Other Skills
         />
         <a
           href={((): string => {
-            const coded = "gmeFzee@gZhxp.Z7.gM";
+            const coded = "n4@TwA7.TFn";
             const key =
               "EWZXNjD8tnBUbzy1riVKAcokSdqpFus5G2TMh6fQ7eg0Ya93vxIl4RPLwCHOmJ";
             const shift = coded.length;

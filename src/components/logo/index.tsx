@@ -22,17 +22,17 @@ const Text: FC<{ loaded?: boolean; delay?: number }> = ({
 }) => {
   const [nameLoaded, setNameLoaded] = useState(false);
 
-  const backgroundRef = useRef<HTMLDivElement>();
-  const textRef = useRef<HTMLDivElement>();
-  const nameRef = useRef<HTMLSpanElement>();
-  const kimRef = useRef<HTMLSpanElement>();
+  const backgroundRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLSpanElement>(null);
+  const kimRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     if (loaded) return;
 
     const timeout = setTimeout(() => {
-      const width = nameRef.current.clientWidth;
-      const kimWidth = kimRef.current.clientWidth;
+      const width = nameRef.current?.clientWidth ?? 0;
+      const kimWidth = kimRef.current?.clientWidth ?? 0;
 
       const measureDiv = document.createElement("div");
       measureDiv.style.display = "inline-block";
@@ -136,7 +136,9 @@ const Text: FC<{ loaded?: boolean; delay?: number }> = ({
       }, 1680);
 
       setTimeout(() => {
-        kimRef.current.innerText = " Kim";
+        if (kimRef.current) {
+          kimRef.current.innerText = " Kim";
+        }
       }, 2000);
     }, delay);
 

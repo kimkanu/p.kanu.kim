@@ -19,7 +19,7 @@ const App: FC = () => {
 
   const { height } = useWindowSize();
 
-  const loadingRef = useRef<{ base: HTMLDivElement }>();
+  const loadingRef = useRef<{ base: HTMLDivElement }>(null);
   const loading = useSelector((state: RootState) => state.loading);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const App: FC = () => {
   }, []);
 
   useEffect(() => {
-    if (progress >= 1 - 1e-6) {
+    if (progress >= 1 - 1e-6 && loadingRef.current) {
       anime({
         targets: loadingRef.current.base,
         duration: 380,

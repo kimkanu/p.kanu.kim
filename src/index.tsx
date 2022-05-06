@@ -7,8 +7,11 @@ import configureStore from "./configure-store";
 
 const store = configureStore();
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const P = Provider as any;
+
 const AppWithStore: FunctionalComponent = () => (
-  <Provider store={store}>
+  <P store={store}>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
@@ -19,7 +22,7 @@ const AppWithStore: FunctionalComponent = () => (
       rel="stylesheet"
     />
     <App />
-  </Provider>
+  </P>
 );
 
 export default AppWithStore;
